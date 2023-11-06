@@ -281,9 +281,6 @@ impl Client {
         let (sender, receiver) = mpsc::channel(1024);
         tokio::spawn(inner.run(receiver));
         let client = Client { sender };
-        client
-            .execute("SET date_time_input_format='best_effort'")
-            .await?;
         Ok(client)
     }
 

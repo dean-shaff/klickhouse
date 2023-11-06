@@ -89,7 +89,7 @@ impl<'a> Iterator for BlockRowIter<'a> {
         if self.row >= self.block.rows {
             return None;
         }
-        let mut out = Vec::new();
+        let mut out = Vec::with_capacity(self.block.column_data.len());
         for (name, value) in self.block.column_data.iter() {
             out.push((&**name, value.get(self.row as usize)?));
         }
